@@ -1,0 +1,18 @@
+# uwsgi를 백그라운드에서 돌게함(daemon on)
+# 서버에서 직접 uwsgi를 켜지않아도 자동으로 켜줌
+[Unit]
+Description=uWSGI service
+After=syslog.target
+
+# 서비스를 시작할때 실행하는 명령어, ec2서버에서 uwsgi를 실행했던 명령어를 그대로 적어준다.
+[Service]
+ExecStart=/home/ubuntu/.pyenv/versions/uwsgi-env/bin/uwsgi -i /srv/ec2_deploy_project/.config/uwsgi/mysite.ini
+
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+StandardError=syslog
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
