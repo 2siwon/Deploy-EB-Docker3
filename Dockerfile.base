@@ -5,7 +5,7 @@ RUN         apt-get -y update
 RUN         apt-get -y dist-upgrade
 RUN         apt-get install -y python-pip git vim
 
-# pyenv(Common-build-problems)
+# pyenv
 RUN         apt-get install -y make build-essential \
             libssl-dev zlib1g-dev libbz2-dev \
             libreadline-dev libsqlite3-dev wget \
@@ -37,3 +37,9 @@ RUN         apt-get -y install nginx
 
 # supervisor install
 RUN         apt-get -y install supervisor
+
+# pip
+ENV         LANG C.UTF-8
+COPY        requirements.txt /srv/requirements.txt
+RUN         /root/.pyenv/versions/app/bin/pip install -r \
+            /srv/requirements.txt
