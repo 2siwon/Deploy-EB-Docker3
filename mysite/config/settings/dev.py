@@ -1,4 +1,5 @@
 from .base import *
+from pprint import pprint
 
 config_secret_dev = json.loads(open(CONFIG_SECRET_DEV_FILE).read())
 
@@ -19,3 +20,5 @@ STATICFILES_STORAGE = 'config.storages.StaticStorage'
 
 # Databases
 DATABASES = config_secret_dev['django']['databases']
+
+pprint(DATABASES)
