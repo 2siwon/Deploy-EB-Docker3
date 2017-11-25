@@ -1,6 +1,7 @@
 # Custom
 .idea/
 .static_root/
+.media/
 
 # .ebignore
 !.config_secret
